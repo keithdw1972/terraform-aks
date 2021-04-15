@@ -1,12 +1,6 @@
-provider "azurerm" {
-  version = "=2.13.0"
-
-  features {}
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = "aks-cluster"
-  location = "uksouth"
+  location = "West US"
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" {
@@ -15,7 +9,7 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   dns_prefix = "aks"
 
   resource_group_name = azurerm_resource_group.rg.name
-  kubernetes_version  = "1.18.2"
+  kubernetes_version  = "1.19.7"
 
   default_node_pool {
     name       = "aks"
